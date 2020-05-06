@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
-import { ClickablePropertyNameCell, RequiredLabel } from '../../common-elements/fields';
+import { ClickablePropertyNameCell, RequiredLabel, ReadOnlyLabel } from '../../common-elements/fields';
 import { FieldDetails } from './FieldDetails';
 
 import {
@@ -39,7 +39,7 @@ export class Field extends React.Component<FieldProps> {
   };
   render() {
     const { className, field, isLast, expandByDefault } = this.props;
-    const { name, deprecated, required, kind } = field;
+    const { name, deprecated, required, readOnly, kind } = field;
     const withSubSchema = !field.schema.isPrimitive && !field.schema.isCircular;
 
     const expanded = field.expanded === undefined ? expandByDefault : field.expanded;
@@ -55,12 +55,14 @@ export class Field extends React.Component<FieldProps> {
         {name}
         <ShelfIcon direction={expanded ? 'down' : 'right'} />
         {required && <RequiredLabel> required </RequiredLabel>}
+        {readOnly && <ReadOnlyLabel> read-only </ReadOnlyLabel>}
       </ClickablePropertyNameCell>
     ) : (
       <PropertyNameCell className={deprecated ? 'deprecated' : undefined} kind={kind} title={name}>
         <PropertyBullet />
         {name}
         {required && <RequiredLabel> required </RequiredLabel>}
+        {readOnly && <ReadOnlyLabel> read-only </ReadOnlyLabel>}
       </PropertyNameCell>
     );
 

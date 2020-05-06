@@ -23,6 +23,7 @@ describe('Models', () => {
       expect(field.name).toEqual('test_name');
       expect(field.in).toEqual('path');
       expect(field.required).toEqual(false);
+      expect(field.readOnly).toEqual(false);
       expect(field.schema.type).toEqual('string');
     });
 

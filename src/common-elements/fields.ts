@@ -45,6 +45,14 @@ export const RequiredLabel = styled(FieldLabel.withComponent('div'))`
   line-height: 1;
 `;
 
+export const ReadOnlyLabel = styled(FieldLabel.withComponent('div'))`
+  color: ${props => props.theme.schema.requireLabelColor};
+  font-size: ${props => props.theme.schema.labelsTextSize};
+  font-weight: normal;
+  margin-left: 20px;
+  line-height: 1;
+`;
+
 export const RecursiveLabel = styled(FieldLabel)`
   color: ${({ theme }) => theme.colors.warning.main};
   font-size: 13px;
